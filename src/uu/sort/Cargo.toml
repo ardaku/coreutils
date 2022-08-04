@@ -18,7 +18,6 @@ path = "src/sort.rs"
 binary-heap-plus = "0.4.1"
 clap = { version = "3.2", features = ["wrap_help", "cargo"] }
 compare = "0.1.0"
-ctrlc = { version = "3.0", features = ["termination"] }
 fnv = "1.0.7"
 itertools = "0.10.0"
 memchr = "2.5.0"
@@ -28,6 +27,9 @@ rayon = "1.5"
 tempfile = "3"
 unicode-width = "0.1.8"
 uucore = { version=">=0.0.11", package="uucore", path="../../uucore", features=["fs"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ctrlc = { version = "3.0", features = ["termination"] }
 
 [[bin]]
 name = "sort"

@@ -44,6 +44,7 @@ impl TmpDirWrapper {
 
         let path = self.temp_dir.as_ref().unwrap().path().to_owned();
         let lock = self.lock.clone();
+        #[cfg(not(target_arch = "wasm32"))]
         ctrlc::set_handler(move || {
             // Take the lock so that `next_file_path` returns no new file path.
             let _lock = lock.lock().unwrap();
